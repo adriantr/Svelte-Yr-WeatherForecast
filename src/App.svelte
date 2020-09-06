@@ -42,6 +42,31 @@
       name: "Larvik",
       lat: "59.0533",
       lon: "10.0352"
+    },
+    {
+      name: "Ryfoss",
+      lat: "61.1378",
+      lon: "8.8194"
+    },
+    {
+      name: "Svolvær",
+      lat: "68.2353",
+      lon: "14.5636"
+    },
+    {
+      name: "Kristiansand",
+      lat: "58.1461",
+      lon: "7.9957"
+    },
+    {
+      name: "Gotland",
+      lat: "57.5000",
+      lon: "18.5000"
+    },
+    {
+      name: "Beitostølen",
+      lat: "61.2486",
+      lon: "8.9065"
     }
   ]
   let tab = [];
@@ -52,10 +77,7 @@
   for (let index = 0; index < 8; index++) {
     let newDate = new Date();
     newDate.setDate(newDate.getDate() + index);
-    newDate.setUTCMinutes(0);
-    newDate.setUTCMilliseconds(0);
-    newDate.setUTCSeconds(0);
-    newDate.setUTCHours(12);
+    newDate.setUTCMinutes(0); newDate.setUTCMilliseconds(0); newDate.setUTCSeconds(0); newDate.setUTCHours(12);
     dates.push(newDate.toISOString());
     newDate.setUTCHours(18);
     dates.push(newDate.toISOString());
@@ -74,27 +96,45 @@
           }
         }
 
+    
+    info.average = info.timeseries.reduce((acc, obj) => {acc = acc + obj.instant.details.air_temperature; return acc},0)/info.timeseries.length;
+
 		infos.push(info);
-		
+    
+    
+    infos.sort(function (a, b) {
+    return b.average - a.average;
+    });
 		infos = infos;
       });
   }
-
-  console.log(infos);
 </script>
 
 <table class="table-auto border-separate">
   <tr class="bg-gray-100">
     <th class="px-4 py-2">City</th>
     {#each dates as date}
-      <th class="px-4 py-2">{new Date(date).toLocaleString()}</th>
+      <th class="px-4 py-2">{new Date(date).toLocaleString('nb-NO', {weekday: "long", day: "numeric", month: "short", hour: "2-digit", minute: "2-digit"})}</th>
     {/each}
   </tr>
   {#each infos as city}
     <tr>
-      <td>{city.name}</td>
+      <td>
+        <div class="flex-row">
+          <div class="flex justify-center font-bold">{city.name}</div>
+          <div class="flex justify-center font-thin text-xs">Avg: {city.average.toFixed(1)}</div>
+        </div>
+      </td>
       {#each city.timeseries as ts}
-        <td class="{ts.instant.details.air_temperature < 15 ? 'bg-blue-100' : 'bg-red-100'} rounded-lg"><div class="flex-row"><div>{ts.instant.details.air_temperature}</div><img src="{symbols[ts.next_6_hours.summary.symbol_code]}"></div></td>
+        <td class="{ts.instant.details.air_temperature < 15 ? 'bg-blue-100 hover:bg-blue-200' : 'bg-red-100 hover:bg-red-200'} rounded-lg">
+          <div class="flex-row">
+            <div class="flex justify-center font-bold">T: {ts.instant.details.air_temperature}</div>
+            <div class="flex justify-center font-thin text-xs">W: {ts.instant.details.wind_speed}</div>
+            <div class="flex justify-center">
+              <img class="h-10 w-10" src="{symbols[ts.next_6_hours.summary.symbol_code]}">
+            </div>
+          </div>
+        </td>
       {/each}
     </tr>
   {/each}
