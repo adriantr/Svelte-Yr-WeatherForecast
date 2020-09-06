@@ -67,6 +67,41 @@
       name: "Beitostølen",
       lat: "61.2486",
       lon: "8.9065"
+    },
+    {
+      name: "Hamn (Senja)",
+      lat: "69.4173", 
+      lon: "17.1623"
+    },
+    {
+      name: "Stryn/Loen",
+      lat: "61.9026",
+      lon: "6.7179"
+    },
+    {
+      name: "Geiranger",
+      lat: "62.0996",
+      lon: "7.2066"
+    },
+    {
+      name: "Nærøyfjorden",
+      lat: "60.8949",
+      lon: "6.8595"
+    },
+    {
+      name: "Vesterålen",
+      lat: "68.8364",
+      lon: "14.5414"
+    },
+    {
+      name: "Lyngsalpene",
+      lat: "69.8763",
+      lon: "20.1387"
+    },
+    {
+      name: "Saltfjellet",
+      lat: "66.5839",
+      lon: "15.3458"
     }
   ]
   let tab = [];

@@ -1793,7 +1793,7 @@ var app = (function () {
     	return child_ctx;
     }
 
-    // (116:4) {#each dates as date}
+    // (151:4) {#each dates as date}
     function create_each_block_2(ctx) {
     	let th;
 
@@ -1812,7 +1812,7 @@ var app = (function () {
     			th = element("th");
     			t = text(t_value);
     			attr_dev(th, "class", "px-4 py-2");
-    			add_location(th, file, 116, 6, 3261);
+    			add_location(th, file, 151, 6, 3838);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, th, anchor);
@@ -1828,14 +1828,14 @@ var app = (function () {
     		block,
     		id: create_each_block_2.name,
     		type: "each",
-    		source: "(116:4) {#each dates as date}",
+    		source: "(151:4) {#each dates as date}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (128:6) {#each city.timeseries as ts}
+    // (163:6) {#each city.timeseries as ts}
     function create_each_block_1(ctx) {
     	let td;
     	let div3;
@@ -1869,22 +1869,22 @@ var app = (function () {
     			div2 = element("div");
     			img = element("img");
     			attr_dev(div0, "class", "flex justify-center font-bold");
-    			add_location(div0, file, 130, 12, 3928);
+    			add_location(div0, file, 165, 12, 4505);
     			attr_dev(div1, "class", "flex justify-center font-thin text-xs");
-    			add_location(div1, file, 131, 12, 4029);
+    			add_location(div1, file, 166, 12, 4606);
     			attr_dev(img, "class", "h-10 w-10");
     			if (img.src !== (img_src_value = /*symbols*/ ctx[1][/*ts*/ ctx[8].next_6_hours.summary.symbol_code])) attr_dev(img, "src", img_src_value);
-    			add_location(img, file, 133, 14, 4181);
+    			add_location(img, file, 168, 14, 4758);
     			attr_dev(div2, "class", "flex justify-center");
-    			add_location(div2, file, 132, 12, 4133);
+    			add_location(div2, file, 167, 12, 4710);
     			attr_dev(div3, "class", "flex-row");
-    			add_location(div3, file, 129, 10, 3893);
+    			add_location(div3, file, 164, 10, 4470);
 
     			attr_dev(td, "class", td_class_value = "" + ((/*ts*/ ctx[8].instant.details.air_temperature < 15
     			? "bg-blue-100 hover:bg-blue-200"
     			: "bg-red-100 hover:bg-red-200") + " rounded-lg"));
 
-    			add_location(td, file, 128, 8, 3751);
+    			add_location(td, file, 163, 8, 4328);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, td, anchor);
@@ -1923,14 +1923,14 @@ var app = (function () {
     		block,
     		id: create_each_block_1.name,
     		type: "each",
-    		source: "(128:6) {#each city.timeseries as ts}",
+    		source: "(163:6) {#each city.timeseries as ts}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (120:2) {#each infos as city}
+    // (155:2) {#each infos as city}
     function create_each_block(ctx) {
     	let tr;
     	let td;
@@ -1972,13 +1972,13 @@ var app = (function () {
 
     			t5 = space();
     			attr_dev(div0, "class", "flex justify-center font-bold");
-    			add_location(div0, file, 123, 10, 3521);
+    			add_location(div0, file, 158, 10, 4098);
     			attr_dev(div1, "class", "flex justify-center font-thin text-xs");
-    			add_location(div1, file, 124, 10, 3592);
+    			add_location(div1, file, 159, 10, 4169);
     			attr_dev(div2, "class", "flex-row");
-    			add_location(div2, file, 122, 8, 3488);
-    			add_location(td, file, 121, 6, 3475);
-    			add_location(tr, file, 120, 4, 3464);
+    			add_location(div2, file, 157, 8, 4065);
+    			add_location(td, file, 156, 6, 4052);
+    			add_location(tr, file, 155, 4, 4041);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, tr, anchor);
@@ -2036,7 +2036,7 @@ var app = (function () {
     		block,
     		id: create_each_block.name,
     		type: "each",
-    		source: "(120:2) {#each infos as city}",
+    		source: "(155:2) {#each infos as city}",
     		ctx
     	});
 
@@ -2084,11 +2084,11 @@ var app = (function () {
     			}
 
     			attr_dev(th, "class", "px-4 py-2");
-    			add_location(th, file, 114, 4, 3197);
+    			add_location(th, file, 149, 4, 3774);
     			attr_dev(tr, "class", "bg-gray-100");
-    			add_location(tr, file, 113, 2, 3168);
+    			add_location(tr, file, 148, 2, 3745);
     			attr_dev(table, "class", "table-auto border-separate");
-    			add_location(table, file, 112, 0, 3123);
+    			add_location(table, file, 147, 0, 3700);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
@@ -2246,6 +2246,41 @@ var app = (function () {
     			name: "Beitostølen",
     			lat: "61.2486",
     			lon: "8.9065"
+    		},
+    		{
+    			name: "Hamn (Senja)",
+    			lat: "69.4173",
+    			lon: "17.1623"
+    		},
+    		{
+    			name: "Stryn/Loen",
+    			lat: "61.9026",
+    			lon: "6.7179"
+    		},
+    		{
+    			name: "Geiranger",
+    			lat: "62.0996",
+    			lon: "7.2066"
+    		},
+    		{
+    			name: "Nærøyfjorden",
+    			lat: "60.8949",
+    			lon: "6.8595"
+    		},
+    		{
+    			name: "Vesterålen",
+    			lat: "68.8364",
+    			lon: "14.5414"
+    		},
+    		{
+    			name: "Lyngsalpene",
+    			lat: "69.8763",
+    			lon: "20.1387"
+    		},
+    		{
+    			name: "Saltfjellet",
+    			lat: "66.5839",
+    			lon: "15.3458"
     		}
     	];
 
