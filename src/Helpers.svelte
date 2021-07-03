@@ -2,6 +2,8 @@
   export function getDates() {
     let dates = [];
 
+    let now = new Date();
+
     for (let index = 0; index < 8; index++) {
       let newDate = new Date();
       newDate.setDate(newDate.getDate() + index);
@@ -9,7 +11,13 @@
       newDate.setUTCMilliseconds(0);
       newDate.setUTCSeconds(0);
       newDate.setUTCHours(12);
-      dates.push(newDate.toISOString());
+      if (index == 0) {
+        if (!now.getUTCHours() >= 12 && !now.getUTCMinutes() > 0) {
+          dates.push(newDate.toISOString());
+        }
+      } else {
+        dates.push(newDate.toISOString());
+      }
       newDate.setUTCHours(18);
       dates.push(newDate.toISOString());
     }
