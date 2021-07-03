@@ -111,6 +111,11 @@
       name: "Saltfjellet",
       lat: "66.5839",
       lon: "15.3458"
+    },
+    {
+      name: "Stokkøya",
+      lat: "64.06325", 
+      lon: "9.98061"
     }
   ]
   }
