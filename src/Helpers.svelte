@@ -12,7 +12,7 @@
       newDate.setUTCSeconds(0);
       newDate.setUTCHours(12);
       if (index == 0) {
-        if (!now.getUTCHours() >= 12 && !now.getUTCMinutes() > 0) {
+        if (now.getUTCHours() < 12) {
           dates.push(newDate.toISOString());
         }
       } else {
