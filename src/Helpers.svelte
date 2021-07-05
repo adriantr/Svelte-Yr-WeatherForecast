@@ -14,12 +14,17 @@
       if (index == 0) {
         if (now.getUTCHours() < 12) {
           dates.push(newDate.toISOString());
+          newDate.setUTCHours(18);
+          dates.push(newDate.toISOString());
+        } else if (now.getUTCHours() < 18) {
+          newDate.setUTCHours(18);
+          dates.push(newDate.toISOString());
         }
       } else {
         dates.push(newDate.toISOString());
+        newDate.setUTCHours(18);
+        dates.push(newDate.toISOString());
       }
-      newDate.setUTCHours(18);
-      dates.push(newDate.toISOString());
     }
 
     return dates;
