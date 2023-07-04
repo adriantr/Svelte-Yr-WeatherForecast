@@ -1784,20 +1784,20 @@ var app = (function () {
 
     function getSymbols() {
     	return {
-    		clearsky_day: "http://nrkno.github.io/yr-weather-symbols/png/100/01d.png",
-    		partlycloudy_day: "http://nrkno.github.io/yr-weather-symbols/png/100/03d.png",
-    		cloudy: "http://nrkno.github.io/yr-weather-symbols/png/100/04.png",
-    		fair_day: "http://nrkno.github.io/yr-weather-symbols/png/100/02d.png",
-    		rain: "http://nrkno.github.io/yr-weather-symbols/png/100/09.png",
-    		clearsky_night: "http://nrkno.github.io/yr-weather-symbols/png/100/01n.png",
-    		fair_night: "http://nrkno.github.io/yr-weather-symbols/png/100/02n.png",
-    		partlycloudy_night: "http://nrkno.github.io/yr-weather-symbols/png/100/03n.png",
-    		lightrain: "http://nrkno.github.io/yr-weather-symbols/png/100/46.png",
-    		rainshowers_day: "http://nrkno.github.io/yr-weather-symbols/png/100/05d.png",
-    		heavyrain: "http://nrkno.github.io/yr-weather-symbols/png/100/10.png",
-    		heavyrainshowers_night: "http://nrkno.github.io/yr-weather-symbols/png/100/41n.png",
-    		heavyrainshowers_day: "http://nrkno.github.io/yr-weather-symbols/png/100/41d.png",
-    		rainshowers_night: "http://nrkno.github.io/yr-weather-symbols/png/100/05n.png"
+    		clearsky_day: "https://www.yr.no/assets/images/weather-symbols/light-mode/default/svg/01d.svg",
+    		partlycloudy_day: "https://www.yr.no/assets/images/weather-symbols/light-mode/default/svg/03d.svg",
+    		cloudy: "https://www.yr.no/assets/images/weather-symbols/light-mode/default/svg/04.svg",
+    		fair_day: "https://www.yr.no/assets/images/weather-symbols/light-mode/default/svg/02d.svg",
+    		rain: "https://www.yr.no/assets/images/weather-symbols/light-mode/default/svg/09.svg",
+    		clearsky_night: "https://www.yr.no/assets/images/weather-symbols/light-mode/default/svg/01n.svg",
+    		fair_night: "https://www.yr.no/assets/images/weather-symbols/light-mode/default/svg/02n.svg",
+    		partlycloudy_night: "https://www.yr.no/assets/images/weather-symbols/light-mode/default/svg/03n.svg",
+    		lightrain: "https://www.yr.no/assets/images/weather-symbols/light-mode/default/svg/46.svg",
+    		rainshowers_day: "https://www.yr.no/assets/images/weather-symbols/light-mode/default/svg/05d.svg",
+    		heavyrain: "https://www.yr.no/assets/images/weather-symbols/light-mode/default/svg/10.svg",
+    		heavyrainshowers_night: "https://www.yr.no/assets/images/weather-symbols/light-mode/default/svg/41n.svg",
+    		heavyrainshowers_day: "https://www.yr.no/assets/images/weather-symbols/light-mode/default/svg/41d.svg",
+    		rainshowers_night: "https://www.yr.no/assets/images/weather-symbols/light-mode/default/svg/05n.svg"
     	};
     }
 
@@ -1887,6 +1887,31 @@ var app = (function () {
     			name: "Saltfjellet",
     			lat: "66.5839",
     			lon: "15.3458"
+    		},
+    		{
+    			name: "Stokkøya",
+    			lat: "64.06325",
+    			lon: "9.98061"
+    		},
+    		{
+    			name: "Härnösand",
+    			lat: "62.63228",
+    			lon: "17.93794"
+    		},
+    		{
+    			name: "Gävle",
+    			lat: "60.67452",
+    			lon: "17.14174"
+    		},
+    		{
+    			name: "Køben",
+    			lat: "55.67594",
+    			lon: "12.56553"
+    		},
+    		{
+    			name: "Åndalsnes",
+    			lat: "62.56749",
+    			lon: "7.68709"
     		}
     	];
     }
@@ -1895,6 +1920,7 @@ var app = (function () {
 
     function getDates() {
     	let dates = [];
+    	let now = new Date();
 
     	for (let index = 0; index < 8; index++) {
     		let newDate = new Date();
@@ -1903,9 +1929,21 @@ var app = (function () {
     		newDate.setUTCMilliseconds(0);
     		newDate.setUTCSeconds(0);
     		newDate.setUTCHours(12);
-    		dates.push(newDate.toISOString());
-    		newDate.setUTCHours(18);
-    		dates.push(newDate.toISOString());
+
+    		if (index == 0) {
+    			if (now.getUTCHours() < 12) {
+    				dates.push(newDate.toISOString());
+    				newDate.setUTCHours(18);
+    				dates.push(newDate.toISOString());
+    			} else if (now.getUTCHours() < 18) {
+    				newDate.setUTCHours(18);
+    				dates.push(newDate.toISOString());
+    			}
+    		} else {
+    			dates.push(newDate.toISOString());
+    			newDate.setUTCHours(18);
+    			dates.push(newDate.toISOString());
+    		}
     	}
 
     	return dates;
